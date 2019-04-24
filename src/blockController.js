@@ -54,8 +54,41 @@ exports.update_a_block = function(req, res){
 };
 
 exports.delete_a_block = function(req, res){
-    Block.deleteOne({id:req.params.id},function(err,block){
+    Block.deleteOne({_id:req.params.blockId},function(err,block){
         if(err) res.send(err);
         res.json(block);
     })
 };
+
+exports.deleteBlockByHash = function (req, res) {
+    Block.deleteOne({ hash: req.params.blockHash }, function (err, block) {
+        if (err) {
+            res.send(err);
+        }
+        else {
+            res.json(block);
+        }
+    });
+}
+
+exports.readBlockByHash = function (req, res) {
+    Block.find({ hash: req.params.blockHash }, function (err, block) {
+        if (err) {
+            res.send(err);
+        }
+        else {
+            res.json(block);
+        }
+    });
+}
+
+exports.updateBlockByHash = function (req, res) {
+    Block.findOneAndUpdate({ hash: req.params.blockHash }, req.body, function (err, block) {
+        if (err) {
+            res.send(err);
+        }
+        else {
+            res.json(block);
+        }
+    });
+}

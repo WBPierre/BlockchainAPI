@@ -21,6 +21,11 @@ module.exports = function(app){
 
     app.route('/info')
         .get(api.getBitcoinInfo);
+        
+    app.route('/blocks/hash/:blockHash')
+        .get(block.readBlockByHash)
+        .put(block.updateBlockByHash)
+        .delete(block.deleteBlockByHash);
 };
 
 

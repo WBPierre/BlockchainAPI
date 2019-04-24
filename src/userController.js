@@ -23,3 +23,25 @@ exports.user_login = function(req, res){
        }
     });
 };
+
+exports.deleteUser = function (req, res) {
+    User.remove({email: req.body.email}, function (err, user) {
+        if (err) {
+            res.send(err);
+        }
+        else {
+            res.json(user);
+        }
+    });
+}
+
+exports.listAllUsers = function (req, res) {
+    User.find({}, function (err, user) {
+        if (err) {
+            res.send(err);
+        }
+        else {
+            res.json(user);
+        }
+    });
+}
