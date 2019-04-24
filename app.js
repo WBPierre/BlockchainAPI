@@ -14,7 +14,9 @@ app.use(bodyParser.json());
 
 mongoose.Promise = global.Promise;
 
-mongoose.connect('mongodb://localhost/Coursnodedb');
+mongoose.connect(mongodb, {useNewUrlParser: true});
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 const blockRoutes = require('./routes/blockRoutes');
 const userRoutes = require('./routes/userRoutes');
