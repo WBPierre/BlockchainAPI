@@ -1,0 +1,4 @@
+exports.secrets = {
+    jwt_key : "jQw9daGLUEEfLp_HmYHHQVyytIHebLd-DXYQyecwzc3G6ytZS7oMC8O9-JMzxCH5HtNFWzlpdyf3gdWPV-Xx8b-CbVl2e3j9mONCk125ujr6u2N_NkuwUqDXJUnXksW-",
+    date: 1556098595454
+};
