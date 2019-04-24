@@ -1,4 +1,4 @@
-module.exports = function(app){
+module.exports = function (app) {
     const block = require('../src/blockController');
     const middleware = require('../middleware/jwtMiddleware');
     const api = require('../providers/blockchainApiProvider');
@@ -13,19 +13,20 @@ module.exports = function(app){
         .put(block.update_a_block)
         .delete(block.delete_a_block);
 
-    app.route('/blockcount')
-        .get(api.getBlockCount);
-
-    app.route('/interval')
-        .get(api.getInterval);
-
-    app.route('/info')
-        .get(api.getBitcoinInfo);
-        
     app.route('/blocks/hash/:blockHash')
         .get(block.readBlockByHash)
         .put(block.updateBlockByHash)
         .delete(block.deleteBlockByHash);
+
+    app.route('/blocks/blockcount')
+        .get(api.getBlockCount);
+
+    app.route('/blocks/interval')
+        .get(api.getInterval);
+
+    app.route('/blocks/info')
+        .get(api.getBitcoinInfo);
+
 };
 
 
