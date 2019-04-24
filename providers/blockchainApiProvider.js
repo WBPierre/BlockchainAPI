@@ -40,3 +40,10 @@ exports.getBitcoinInfo = function(req, res){
         res.json(body);
     })
 };
+
+exports.getTimeNextBlock = function(req, res){
+    request (baseUrl + 'q/eta', function (error, response, body){
+        if(error) res.send(error);
+        res.json({"Time until next block (seconds) ":body});
+    })
+};
