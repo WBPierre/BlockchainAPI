@@ -1,6 +1,7 @@
 module.exports = function(app){
     const block = require('../src/blockController');
     const middleware = require('../middleware/jwtMiddleware');
+    const api = require('../providers/blockchainApiProvider');
 
     app.route('/blocks')
         .all(middleware.verify_token)
@@ -11,6 +12,15 @@ module.exports = function(app){
         .get(block.read_a_block)
         .put(block.update_a_block)
         .delete(block.delete_a_block);
+
+    app.route('/blockcount')
+        .get(api.getBlockCount);
+
+    app.route('/interval')
+        .get(api.getInterval);
+
+    app.route('/info')
+        .get(api.getBitcoinInfo);
 };
 
 
