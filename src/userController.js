@@ -29,7 +29,7 @@ exports.user_login = function (req, res) {
 
         if (err) res.send(err);
         if (user.email === req.body.email && user.password === req.body.password) {
-            jwt.sign({ user: user }, config.secrets.jwt_key, { expiresIn: '30 days' }, (err, token) => {
+            jwt.sign({ user: user }, config.secrets.jwt_key, { expiresIn: '7 days' }, (err, token) => {
                 if (err) res.send(err);
                 res.json({ token });
             });

@@ -18,13 +18,13 @@ module.exports = function (app) {
         .put(block.updateBlockByHash)
         .delete(block.deleteBlockByHash);
 
-    app.route('/blocks/blockcount')
+    app.route('/blockcount')
         .get(api.getBlockCount);
 
-    app.route('/blocks/interval')
+    app.route('/interval')
         .get(api.getInterval);
 
-    app.route('/blocks/info')
+    app.route('/info')
         .get(api.getBitcoinInfo);
 
 };
